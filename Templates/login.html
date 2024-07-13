@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card-wrapper">
+
+    <div class="card">
+
+      <h1 class="center">Crear Cuenta</h1>
+
+      <form name="signup_form">
+
+        <label for="cedula">Cedula</label>
+        <input type="text" name="cedula" class="field" required>
+
+        <label for="correo">Email</label>
+        <input type="email" name="correo" class="field" required>
+
+        <label for="contrasena">Clave</label>
+        <input type="password" name="contrasena" class="field" required>
+
+        <label for="Membresia_id">Elija una Membresia:</label>
+        <select id="Membresia_id" name="Membresia_id">
+            <option value="1">Basica</option>
+            <option value="2">Premium</option>
+        </select>
+
+        <label for="Nombre_completo">Nombre Completo</label>
+        <input type="text" name="Nombre_completo" class="field" required>
+
+        <label for="Telefono">Telefono</label>
+        <input type="text" name="Telefono" class="field" required>
+
+
+        <p class="error error--hidden"></p>
+
+        <input type="submit" value="Registrate" class="btn">
+      
+      </form>
+      
+    </div>
+
+
+    <div class="card">
+
+      <h1 class="center">Log In</h1>
+
+      <form name="login_form">
+
+        <label for="correo">Email</label>
+        <input type="email" name="correo" class="field" required>
+
+        <label for="contrasena">Password</label>
+        <input type="password" name="contrasena" class="field" required>
+
+        <p class="error error--hidden"></p>
+
+        <input type="submit" value="Log In" class="btn">
+      
+      </form>
+      
+    </div>
+  
+  </div>
+
+{% endblock %}
