@@ -33,11 +33,11 @@ class Usuario:
 
 
     #Verificacion de email    
-    if db.usuarios.find_one({ "correo": user['correo'] }):
+    if db.Usuarios.find_one({ "correo": user['correo'] }):
       return jsonify({ "error": "El correo ya existe!!" }), 400
     
     #Se inserta y se inicia la sesion
-    if db.usuarios.insert_one(user):
+    if db.Usuarios.insert_one(user):
           return self.start_session(user)
 
     return jsonify({ "error": "Error al crear el usuario" }), 400
@@ -52,7 +52,7 @@ class Usuario:
   #logearse
   def login(self):
 
-    user = db.usuarios.find_one({
+    user = db.Usuarios.find_one({
       "correo": request.form.get('correo')
     })
 
