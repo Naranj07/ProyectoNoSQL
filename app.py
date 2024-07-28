@@ -77,4 +77,12 @@ def ejercicio_view():
     return render_template('ejercicio.html', ejercicios=ejercicios)
 
 
+#Rutas Membresia
+from membresia import routes 
+
+@app.route('/membresia/')
+def membresia_view():
+    membresias = db.Membresias.find()
+    return render_template('membresia.html', membresias=membresias)
+
 

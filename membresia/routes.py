@@ -1,16 +1,16 @@
 from flask import Flask
 from app import app
-from membresias.models import membresias
+from membresia.models import Membresia
 
-@app.route('/membresias/add_trainer', methods=['POST'])
-def add_trainer():
-  return membresias().add_trainer()
+@app.route('/membresia/add_membresia', methods=['POST'])
+def add_membresia():
+  return Membresia().add_membresia()
 
-@app.route('/membresias/delete_trainer/<trainer_id>', methods=['GET'])
-def delete_trainer(trainer_id):
-    return membresias().delete_trainer(trainer_id)
+@app.route('/membresia/delete_membresia/<membresia_id>', methods=['GET'])
+def delete_membresia(membresia_id):
+    return Membresia().delete_membresia(membresia_id)
 
 
-@app.route('/membresias/edit_trainer/<trainer_id>', methods=['POST'])
-def edit_trainer(trainer_id):
-    return membresias().edit_trainer(trainer_id)
+@app.route('/membresia/edit_membresia/<membresia_id>', methods=['POST'])
+def edit_membresia(membresia_id):
+    return Membresia().edit_membresia(membresia_id)
