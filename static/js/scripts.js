@@ -1,3 +1,5 @@
+//############### Login Usuario ####################
+
 $("form[name=signup_form").submit(function(e) {
 
   var $form = $(this);
@@ -48,7 +50,7 @@ $("form[name=login_form").submit(function(e) {
 });
 
 
-//################################################
+//#################### Entrenador ######################
 
 $("form[name=add_trainer_form").submit(function(e) {
 
@@ -74,7 +76,7 @@ $("form[name=add_trainer_form").submit(function(e) {
 
 
 
-$(document).on("click", ".btn-danger", function(e) {
+$(document).on("click", ".btn-danger-trainer", function(e) {
   e.preventDefault();
   var url = $(this).attr("href");
   
@@ -107,6 +109,72 @@ $("form[action*='edit_trainer']").submit(function(e) {
       },
       error: function(resp) {
           alert("Error al editar el entrenador: " + resp.responseJSON.error);
+      }
+  });
+});
+
+
+
+//###################### Ejercicio #####################
+
+
+$("form[name=add_exercise_form").submit(function(e) {
+
+  var $form = $(this);
+  var $error = $form.find(".error");
+  var data = $form.serialize();
+
+  $.ajax({
+    url: "/ejercicio/add_exercise",
+    type: "POST",
+    data: data,
+    dataType: "json",
+    success: function(resp) {
+      window.location.href = "/ejercicio/";
+    },
+    error: function(resp) {
+      $error.text(resp.responseJSON.error).removeClass("error--hidden");
+    }
+  });
+
+  e.preventDefault();
+});
+
+
+
+$(document).on("click", ".btn-danger-exercise", function(e) {
+  e.preventDefault();
+  var url = $(this).attr("href");
+  
+  $.ajax({
+      url: url,
+      type: "GET",
+      success: function(resp) {
+          window.location.href = "/ejercicio/"; // Redirige después de eliminar
+      },
+      error: function(resp) {
+          alert("Error al eliminar el ejercicio: " + resp.responseJSON.error);
+      }
+  });
+});
+
+
+
+$("form[action*='edit_exercise']").submit(function(e) {
+  e.preventDefault();
+  var $form = $(this);
+  var url = $form.attr('action');
+  var data = $form.serialize();
+
+  $.ajax({
+      url: url,
+      type: "POST",
+      data: data,
+      success: function(resp) {
+          window.location.href = "/ejercicio/"; // Redirige después de editar
+      },
+      error: function(resp) {
+          alert("Error al editar el ejercicio: " + resp.responseJSON.error);
       }
   });
 });

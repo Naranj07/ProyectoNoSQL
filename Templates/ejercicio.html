@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="card-wrapper">
+  <div class="card">
+      <h1 class="center">Ejercicio</h1>
+      <form name="add_exercise_form">
+          <label for="name">Nombre del Ejercicio:</label>
+          <input type="text" id="name" name="name" required>
+          
+          <label for="description">Descripcion:</label>
+          <input type="text" id="description" name="description" required>
+          
+          <label for="youtubeLink">Link del video:</label>
+          <input type="text" id="youtubeLink" name="youtubeLink" required>
+          
+          <input type="submit" value="Agregar Ejercicio">
+      </form>
+  </div>
+</div>
+
+
+<div class="col-md-6">
+    <div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="text-center">Ejercicios</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+                    {% for ejercicio in ejercicios %}
+                        <div class="col">
+                            <li class="list-group-item mb-3">
+                                <form action="{{ url_for('edit_exercise', exercise_id=ejercicio._id) }}" method="POST">
+                                    <input type="hidden" name="exercise_id" value="{{ejercicio._id}}">
+                                    <label>Nombre del Ejercicio</label>
+                                    <input type="text" class="form-control mb-3" value="{{ejercicio.name}}" name="name" required>
+                                    
+                                    <label>Descripcion</label>
+                                    <input type="text" class="form-control mb-3" value="{{ejercicio.description}}" name="description" required>
+                                    
+                                    <label>Youtube Link</label>
+                                    <input type="text" class="form-control mb-3" value="{{ejercicio.youtubeLink}}" name="youtubeLink" required>
+
+                                    <!-- Aqui va el video de youtube -->
+                                    <div class="mb-3">
+                                        <label>Video</label>
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ ejercicio.youtubeLink | youtube_embed_id }}" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                
+                                
+                                    
+                                    <button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button>
+                                    <a href="{{url_for('delete_exercise', exercise_id=ejercicio._id)}}" class="btn btn-danger-exercise btn-sm mt-3">Eliminar</a>
+                                </form>
+                            </li>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+        </div> 
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
