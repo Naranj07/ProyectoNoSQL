@@ -86,3 +86,21 @@ def membresia_view():
     return render_template('membresia.html', membresias=membresias)
 
 
+#Rutas Reservas
+from reservas import routes
+
+@app.route('/reservas/')
+def reservas_view():
+    reservaciones = db.Reservaciones.find()
+    return render_template('reservas.html', reservas=reservaciones)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+#Rutas Clases
+from clases import routes
+
+@app.route('/clases/')
+def clases_view():
+    clases = db.Clases.find()
+    return render_template('clases.html', clases=clases)

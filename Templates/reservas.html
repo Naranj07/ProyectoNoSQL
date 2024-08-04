@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Mis Reservas</h2>
+<ul>
+  <div class="card">
+    <h1 class="center">Agregar Reservas</h1>
+    <form name="add_reservas_form" action="{{ url_for('add_reservas') }}" method="POST">
+      <label for="_id">id_reserva (solo numeros):</label>
+      <input type="text" id="id_reserva" name="id_reserva" required>
+      <label for="tipo_reserva">tipo_reserva:</label>
+      <input type="text" id="tipo_reserva" name="tipo_reserva" required>
+      <label for="detallePrueba">detallePrueba:</label>
+      <input type="text" id="detallePrueba" name="detallePrueba" required>
+      <input type="submit" value="Agregar Reserva" class="btn">
+    </form>
+   </div>
+  </div>
+  {% endblock %}
