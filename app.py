@@ -104,3 +104,21 @@ from clases import routes
 def clases_view():
     clases = db.Clases.find()
     return render_template('clases.html', clases=clases)
+
+
+#Rutas Factura
+from facturas import routes
+
+@app.route('/facturas/')
+def view_facturas():
+    facturas = db.Facturas.find()
+    return render_template('factura.html', facturas=facturas)
+
+#Rutas Sedes
+from sedes import routes
+
+@app.route('/sedes/')
+def factura_view():
+    sedes = db.Sedes.find()
+    return render_template('sede.html', sedes=sedes)
+

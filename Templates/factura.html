@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="card-wrapper">
+
+  <div class="card">
+
+    <h1 class="center">Centro de Facturas</h1>
+    <div class="card-body">
+      <ul class="list-group">
+        <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+          {% for factura in facturas %}
+          <div class="col">
+            <li class="list-group-item mb-3">
+              <form action="{{ url_for('edit_factura', factura_id=factura.id_factura) }}" method="POST" >
+                <input type="hidden" name="factura_id" value="{{ factura._id }}">
+                <label>Id de la factura</label>
+                <input type="text" class="form-control mb-3" value="{{factura.id_factura}}" name="id_factura"
+                    required>
+
+                <label>Id del usuario</label>
+                <input type="text" class="form-control mb-3" value="{{factura.userId}}" name="userId"
+                    required>
+
+                <label>Detalle de la factura</label>
+                <input type="text" class="form-control mb-3" value="{{factura.detalle_factura}}" name="detalle_factura"
+                    required>
+
+                <label>Id de la membresia</label>
+                <input type="text" class="form-control mb-3" value="{{factura.id_membresia}}" name="id_membresia" 
+                    required>
+                
+                <label>Fecha de la factura</label>
+                <input type="text" class="form-control mb-3" value="{{factura.fecha}}" name="fecha" 
+                    required>
+                
+                <input type="submit" class="btn btn-danger-factura btn-sm mt-3" value="Editar">
+              </form>
+
+              <a href="{{url_for('delete_factura', factura_id=factura._id)}}"
+                  class="btn btn-danger-factura btn-sm mt-3">Eliminar</a>
+            </li>
+          </div>
+          {% endfor %}
+        </div>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+    <h1 class="center">Agregar Facturas</h1>
+    <form name="add_factura_form" action="{{ url_for('add_factura') }}" method="POST">
+      <label for="id_factura">id_factura (solo numeros):</label>
+      <input type="text" id="id_factura" name="id_factura" required>
+
+      <label for="userId">userId:</label>
+      <input type="text" id="userId" name="userId" required>
+
+      <label for="detalle_factura">detalle_factura:</label>
+      <input type="text" id="detalle_factura" name="detalle_factura" required>
+
+      <label for="id_membresia">id_membresia (solo numeros):</label>
+      <input type="text" id="id_membresia" name="id_membresia" required>
+
+      <label for="fecha">fecha:</label>
+      <input type="text" id="fecha" name="fecha" required>
+
+      <input type="submit" value="Agregar Facturas" class="btn">
+    </form>
+  </div>
+
+
+
+</div>
+
+
+{% endblock %}
