@@ -44,6 +44,12 @@ def youtube_embed_id(link):
 #Rutas Usuario
 from usuario import routes
 
+@app.route('/index/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route('/')
 def login_view():

@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from clases.models import Clases
 
-@app.route('/clases/add_clases', methods=['POST'])
+@app.route('/clases/add_clases', methods=['GET', 'POST'])
 def add_clases():
   return Clases().add_clases()
 

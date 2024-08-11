@@ -3,21 +3,23 @@
 {% block content %}
 <h2>Clases Disponibles</h2>
 <ul>
-    <div class="card">
-        <h1 class="center">Agregar Clases</h1>
-        <form name="add_clases_form" action="{{ url_for('add_clases') }}" method="POST">
-          <label for="_id">id_clase (solo numeros):</label>
-          <input type="text" id="id_clase" name="id_clase" required>
-          <label for="nombre_clase">nombre_clase:</label>
-          <input type="text" id="nombre_clase" name="nombre_clase" required>
-          <label for="idEntrenador">idEntrenador:</label>
-          <input type="text" id="idEntrenador" name="idEntrenador" required>
-          <label for="horario">horario:</label>
-          <input type="text" id="horario" name="horario" required>
-          <label for="maxParticipantes">maxParticipantes:</label>
-          <input type="text" id="maxParticipantes" name="maxParticipantes" required>
-          <input type="submit" value="Agregar Clase" class="btn">
-        </form>
-      </div>
-    </div>
-{% endblock %}
+  <div class="card">
+    <h1 class="center">Agregar Clases</h1>
+    <form name="add_clases_form" action="{{ url_for('add_clases') }}" method="POST">
+      <label for="_id">id_clase (solo numeros):</label>
+      <input type="text" id="id_clase" name="id_clase" required>
+      <label for="nombre_clase">nombre_clase:</label>
+      <input type="text" id="nombre_clase" name="nombre_clase" required>
+      <label for="idEntrenador">idEntrenador:</label>
+      <input type="text" id="idEntrenador" name="idEntrenador" required>
+      <label for="horario">horario:</label>
+      <input type="text" id="horario" name="horario" required>
+      <label for="maxParticipantes">maxParticipantes:</label>
+      <input type="text" id="maxParticipantes" name="maxParticipantes" required>
+      <input type="submit" value="Agregar Clase" class="btn">
+    </form>
+  </div>
+  </div>
+
+
+  {% endblock %}

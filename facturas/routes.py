@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from facturas.models import Factura
 
-@app.route('/factura/add_factura', methods=['POST'])
+@app.route('/factura/add_factura', methods=['GET','POST'])
 def add_factura():
   return Factura().add_factura()
 

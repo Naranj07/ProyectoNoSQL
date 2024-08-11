@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from reservas.models import Reservas
 
-@app.route('/reservas/add_reservas', methods=['POST'])
+@app.route('/reservas/add_reservas', methods=['GET','POST'])
 def add_reservas():
   return Reservas().add_reservas()
 

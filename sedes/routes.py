@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from sedes.models import Sede
 
-@app.route('/sede/add_sede', methods=['POST'])
+@app.route('/sede/add_sede', methods=['GET','POST'])
 def add_sede():
   return Sede().add_sede()
 

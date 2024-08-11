@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from ejercicio.models import Ejercicio
 
-@app.route('/ejercicio/add_exercise', methods=['POST'])
+@app.route('/ejercicio/add_exercise', methods=['GET','POST'])
 def add_exercise():
   return Ejercicio().add_exercise()
 

@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from entrenador.models import Entrenador
 
-@app.route('/entrenador/add_trainer', methods=['POST'])
+@app.route('/entrenador/add_trainer', methods=['GET','POST'])
 def add_trainer():
   return Entrenador().add_trainer()
 

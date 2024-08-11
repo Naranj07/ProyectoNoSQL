@@ -2,7 +2,7 @@ from flask import Flask
 from app import app
 from membresia.models import Membresia
 
-@app.route('/membresia/add_membresia', methods=['POST'])
+@app.route('/membresia/add_membresia', methods=['GET','POST'])
 def add_membresia():
   return Membresia().add_membresia()
 
