@@ -73,6 +73,11 @@ def entrenador_view():
     return render_template('entrenador.html', entrenadores=entrenadores)
 
 
+@app.route('/entrenadores/')
+def entrenadores_view():
+    entrenadores = db.Entrenadores.find()
+    return render_template('entrenadores.html', entrenadores=entrenadores)
+
 
 #Rutas Ejercicios
 from ejercicio import routes
@@ -81,6 +86,11 @@ from ejercicio import routes
 def ejercicio_view():
     ejercicios = db.Ejercicios.find()
     return render_template('ejercicio.html', ejercicios=ejercicios)
+
+@app.route('/ejercicios/')
+def ejercicios_view():
+    ejercicios = db.Ejercicios.find()
+    return render_template('ejercicios.html', ejercicios=ejercicios)
 
 
 #Rutas Membresia
