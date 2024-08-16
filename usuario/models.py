@@ -20,6 +20,7 @@ class Usuario:
     # Crear Usuario
     user = {
       "_id": uuid.uuid4().hex,
+      "tipo": "cliente",
       "cedula": request.form.get('cedula'),
       "correo": request.form.get('correo'),
       "contrasena": request.form.get('contrasena'),
