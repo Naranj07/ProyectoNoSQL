@@ -90,7 +90,7 @@ from ejercicio import routes
 @app.route('/ejercicio/')
 def ejercicio_view():
     ejercicios = db.Ejercicios.find()
-    return render_template('ejercicio.html', ejercicios=ejercicios)
+    return render_template('ejercicios.html', ejercicios=ejercicios)
 
 @app.route('/ejercicios/')
 def ejercicios_view():

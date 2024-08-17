@@ -1,25 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Clases Disponibles</h2>
-<ul>
+<div class="card-wrapper">
+
+  <div class="card">
+    <h1 class="center">Clases</h1>
+    <div class="card-body">
+      <ul class="list-group">
+        <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+          {% for clase in clases %}
+          <div class="col">
+            <li class="list-group-item mb-3">
+              <form action="{{ url_for('edit_clases', _id=clase._id) }}" method="POST">
+                <input type="hidden" name="_id" value="{{ clase._id }}">
+                
+                <label>Nombre de la clase</label>
+                <input type="text" class="form-control mb-3" value="{{ clase.nombre }}" name="nombre" required>
+
+                <label>Id del Entrenador</label>
+                <input type="text" class="form-control mb-3" value="{{ clase.idEntrenador }}" name="idEntrenador" required>
+
+                <label>Horario</label>
+                <input type="text" class="form-control mb-3" value="{{ clase.horario }}" name="horario" required>
+
+                <label>Máximo de Participantes</label>
+                <input type="text" class="form-control mb-3" value="{{ clase.maxParticipantes }}" name="maxParticipantes" required>
+
+                <input type="submit" class="btn btn-danger-clase btn-sm mt-3" value="Editar">
+              </form>
+
+              <a href="{{ url_for('delete_clases', _id=clase._id) }}" class="btn btn-danger-clase btn-sm mt-3">Eliminar</a>
+            </li>
+          </div>
+          {% endfor %}
+        </div>
+      </ul>
+    </div>
+  </div>
+
   <div class="card">
     <h1 class="center">Agregar Clases</h1>
-    <form name="add_clases_form" action="{{ url_for('add_clases') }}" method="POST">
-      <label for="_id">id_clase (solo numeros):</label>
-      <input type="text" id="id_clase" name="id_clase" required>
-      <label for="nombre_clase">nombre_clase:</label>
-      <input type="text" id="nombre_clase" name="nombre_clase" required>
-      <label for="idEntrenador">idEntrenador:</label>
+    <form name="add_clase_form" action="{{ url_for('add_clases') }}" method="POST">
+      <label for="nombre">Nombre de la clase:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="idEntrenador">Id del Entrenador:</label>
       <input type="text" id="idEntrenador" name="idEntrenador" required>
-      <label for="horario">horario:</label>
+
+      <label for="horario">Horario:</label>
       <input type="text" id="horario" name="horario" required>
-      <label for="maxParticipantes">maxParticipantes:</label>
+
+      <label for="maxParticipantes">Máximo de Participantes:</label>
       <input type="text" id="maxParticipantes" name="maxParticipantes" required>
+
       <input type="submit" value="Agregar Clase" class="btn">
     </form>
   </div>
-  </div>
 
+</div>
 
-  {% endblock %}
+{% endblock %}

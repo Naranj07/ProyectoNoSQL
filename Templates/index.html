@@ -19,30 +19,32 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('add_clases') }}">Clases</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('clases_view') }}">Clases</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_exercise') }}">Ejercicio</a>
+                        <a class="nav-link" href="{{ url_for('ejercicio_view') }}">Ejercicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_trainer') }}">Entrenador</a>
+                        <a class="nav-link" href="{{ url_for('entrenador_view') }}">Entrenador</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_factura') }}">Factura</a>
+                        <a class="nav-link" href="{{ url_for('view_facturas') }}">Factura</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_membresia') }}">Membresía</a>
+                        <a class="nav-link" href="{{ url_for('membresia_view') }}">Membresía</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_reservas') }}">Reservas</a>
+                        <a class="nav-link" href="{{ url_for('reservas_view') }}">Reservas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_sede') }}">Sede</a>
+                        <a class="nav-link" href="{{ url_for('factura_view') }}">Sede</a>
                     </li>
                 </ul>
                 <div class="ms-auto d-flex">
                     <div>
                         <a class="btn btn-warning ms-3" href="{{ url_for('login_view') }}">Inicio de sesión</a>
+                        <a class="btn btn-warning ms-3">Administrador</a>
+                        <a class="btn btn-warning ms-3">Cliente</a>
                     </div>
                     <div>
                         <a class="nav-link"

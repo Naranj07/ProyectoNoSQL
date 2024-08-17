@@ -1,37 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div class="col-md-6">
-    <div class="card-wrapper">
-        <div class="container d-flex justify-content-center">
-            <div class="row row-cols-1 row-cols-sm-2">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center my-4">Ejercicios</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
                 {% for ejercicio in ejercicios %}
-                <div class="col mb-3">
-                <div class="card">
-                    <div class="card-header">
-                    <h1 class="text-center">Ejercicio</h1>
-                    </div>
-                    <div class="card-body">
-                    <p><strong>Nombre:</strong> {{ejercicio.name}} </p>
-                    <p><strong>Descripcion:</strong> {{ejercicio.description}}</p>
-                    <p><strong>Video:</strong></p>
-                    <div class="mb-3">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ ejercicio.youtubeLink | youtube_embed_id }}" allowfullscreen></iframe>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-header text-center">
+                            <h3 class="card-title">Ejercicios</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Nombre:</strong> {{ ejercicio.name }}</p>
+                            <p><strong>Descripción:</strong> {{ ejercicio.description }}</p>
+                            <p><strong>Video:</strong></p>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/{{ ejercicio.youtubeLink | youtube_embed_id }}" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
-                    </div>
                 </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
-        </div>
-    </div>
     </div>
 </div>
-
-
-
 {% endblock %}

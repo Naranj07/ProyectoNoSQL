@@ -44,7 +44,7 @@ class Clases:
         updated_clase = {
             "_id": request.form.get('_id'),
             "_nombre": request.form.get('nombre'),
-            "idEntrenador": request.form.get('idEntrnador'),
+            "idEntrenador": request.form.get('idEntrenador'),
             "horario": request.form.get('horario'),
             "maxParticpantes": request.form.get('maxParticpantes')
         }

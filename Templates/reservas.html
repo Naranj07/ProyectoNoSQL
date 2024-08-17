@@ -1,19 +1,55 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Mis Reservas</h2>
-<ul>
+<div class="card-wrapper">
+
   <div class="card">
-    <h1 class="center">Agregar Reservas</h1>
-    <form name="add_reservas_form" action="{{ url_for('add_reservas') }}" method="POST">
-      <label for="_id">id_reserva (solo numeros):</label>
-      <input type="text" id="id_reserva" name="id_reserva" required>
-      <label for="tipo_reserva">tipo_reserva:</label>
-      <input type="text" id="tipo_reserva" name="tipo_reserva" required>
-      <label for="detallePrueba">detallePrueba:</label>
-      <input type="text" id="detallePrueba" name="detallePrueba" required>
+    <h1 class="center">Reservas</h1>
+    <div class="card-body">
+      <ul class="list-group">
+        <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+          {% for reserva in reservas %}
+          <div class="col">
+            <li class="list-group-item mb-3">
+              <form action="{{ url_for('edit_reservas', _id=reserva._id) }}" method="POST">
+                <input type="hidden" name="_id" value="{{ reserva._id }}">
+
+                <label>Id del Usuario</label>
+                <input type="text" class="form-control mb-3" value="{{ reserva.idUsuario }}" name="idUsuario" required>
+
+                <label>Tipo de Reserva</label>
+                <input type="text" class="form-control mb-3" value="{{ reserva.tipo }}" name="tipo" required>
+
+                <label>Detalle de la Clase</label>
+                <input type="text" class="form-control mb-3" value="{{ reserva.detalleClase }}" name="detalleClase" required>
+
+                <input type="submit" class="btn btn-danger-reserva btn-sm mt-3" value="Editar">
+              </form>
+
+              <a href="{{ url_for('delete_reservas', _id=reserva._id) }}" class="btn btn-danger-reserva btn-sm mt-3">Eliminar</a>
+            </li>
+          </div>
+          {% endfor %}
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1 class="center">Agregar Reserva</h1>
+    <form name="add_reserva_form" action="{{ url_for('add_reservas') }}" method="POST">
+      <label for="idUsuario">Id del Usuario:</label>
+      <input type="text" id="idUsuario" name="idUsuario" required>
+
+      <label for="tipo">Tipo de Reserva:</label>
+      <input type="text" id="tipo" name="tipo" required>
+
+      <label for="detalleClase">Detalle de la Clase:</label>
+      <input type="text" id="detalleClase" name="detalleClase" required>
+
       <input type="submit" value="Agregar Reserva" class="btn">
     </form>
-   </div>
   </div>
-  {% endblock %}
+
+</div>
+{% endblock %}
