@@ -10,23 +10,33 @@ class Factura:
 
   def add_factura(self):
 
+
     # Crear Factura
     factura = {
       "_id": uuid.uuid4().hex,
-      "id_factura": request.form.get('id_factura'),
-      "userId": request.form.get('userId'),
-      "detalle_factura": request.form.get('detalle_factura'),
-      "id_membresia": request.form.get('id_membresia'),
-      "fecha": request.form.get('fecha')
-    }
+      "usuario": request.form.get('Nombre_completo'),
+      "detalle_factura": request.form.get('Membresia_nombre'),
+       "pago": request.form.get('pago'),
+       "fecha": request.form.get('fecha'),
+       "metodo_de_pago": request.form.get('metodoPago')
+     }
+    
+#    factura = {
+#      "_id": uuid.uuid4().hex,
+#      "id_factura": request.form.get('id_factura'),
+#      "userId": request.form.get('userId'),
+#      "detalle_factura": request.form.get('detalle_factura'),
+#      "id_membresia": request.form.get('id_membresia'),
+#      "fecha": request.form.get('fecha')
+#    }
 
 
-    if db.Facturas.find_one({ "id_factura": factura['id_factura'] }):
+    if db.Facturas.find_one({ "_id": factura['_id'] }):
       return jsonify({ "error": "La factura ya existe" }), 400
 
     db.Facturas.insert_one(factura)
 
-    return redirect(url_for('view_facturas'))
+    return jsonify({ "success": "factura creada" }), 200
 
 
 

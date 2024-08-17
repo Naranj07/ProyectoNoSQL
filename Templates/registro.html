@@ -34,11 +34,43 @@
 
       <label for="Telefono">Telefono</label>
       <input type="text" name="Telefono" class="field" required>
+      <button id="facturar-btn" class="btn btn-warning" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+        Facturar
+      </button>
 
+      <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+        aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="staticBackdropLabel">Facturar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            Membresia:
+            <label id="mem" ></label>
+            <input hidden id="hiddenMem" name="Membresia_nombre">
+            
 
-      <p class="error error--hidden"></p>
+            Pagar:
+            <label id="pago" ></label>
+            <input hidden id="hiddenPago" name="pago">
+            Seleccione metodo de pago:
+            <select id="metodo_pago" name="metodoPago">
+              <option value="1">Sinpe</option>
+              <option value="2">Efectivo</option>
+            </select>
+            Fecha:
+            <input type="text" id="fecha" name="fecha" required>
 
-      <input type="submit" value="Registrate" class="btn btn-warning">
+            
+
+            <input type="submit" value="Registrate" class="btn btn-warning">
+          </div>
+        </div>
+      </div>
+
+      
 
     </form>
 

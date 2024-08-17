@@ -1,6 +1,62 @@
-//############### Login Usuario ####################
 
+//############### Login Usuario ####################
 $("form[name=signup_form").submit(function(e) {
+  e.preventDefault(); // Evitar la acción predeterminada del formulario
+
+  var $form = $(this);
+  var $error = $form.find(".error");
+  var data = $form.serializeArray(); // Serializar el formulario
+/*  var dataFactura= $form.serializeArray(); 
+
+  // Capturar valores específicos para la factura
+  var nombreCompleto = $form.find("input[name='Nombre_completo']").val();
+  var membresia = $form.find("select[name='Membresia_id'] option:selected").text();
+  var precio = $form.find("select[name='Membresia_id'] option:selected").data("precio");
+  var fecha = $("#fecha").val();
+  var metodoPago = $("#metodo_pago").val();
+
+  var facturaData = {
+    usuario: nombreCompleto,
+    detalle_factura: membresia,
+    pago: precio,
+    fecha: fecha,
+    metodo_de_pago: metodoPago
+  };*/
+
+  // Primera petición AJAX para crear el usuario
+  $.ajax({
+    url: "/usuario/signup",
+    type: "POST",
+    data: data,
+    dataType: "json",
+    success: function(resp) {
+      console.log(resp);
+
+      // Segunda petición AJAX para crear la factura
+      $.ajax({
+        url: "/factura/add_factura",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function(resp) {
+          console.log("Factura creada:", resp);
+          window.location.href = "/home/"; // Redirige a home después de la creación exitosa
+        },
+        error: function(resp) {
+          console.log("Error al crear factura:", resp);
+        }
+      });
+    },
+    error: function(resp) {
+      console.log(resp);
+      $error.text(resp.responseJSON.error).removeClass("error--hidden");
+    }
+  });
+});
+
+
+
+/*$("form[name=signup_form").submit(function(e) {
 
   var $form = $(this);
   var $error = $form.find(".error");
@@ -23,7 +79,7 @@ $("form[name=signup_form").submit(function(e) {
   });
 
   e.preventDefault();
-});
+});*/
 
 
 
@@ -47,6 +103,19 @@ $("form[name=login_form").submit(function(e) {
   });
 
   e.preventDefault();
+});
+//para la facturación vista en registro
+$(document).ready(function() {
+  $("#facturar-btn").click(function() {
+    var $select = $("#Membresia_id");
+    var tipo = $select.find("option:selected").data("tipo");
+    var precio = $select.find("option:selected").data("precio");
+
+    $("#mem").text(tipo);
+    $("#pago").text(precio);
+    $("#hiddenMem").val(tipo);
+    $("#hiddenPago").val(precio);
+  });
 });
 
 
